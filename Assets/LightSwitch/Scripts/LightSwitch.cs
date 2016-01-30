@@ -38,7 +38,14 @@ public class LightSwitch : MonoBehaviour {
 	// start with.
 	void Start () {
 		state = LightSwitch.State.on;
+	}
 
+	void Update () {
+		if (state == LightSwitch.State.on && Input.GetButton("Fire1")) {
+			TurnOff ();
+		} else if (state == LightSwitch.State.off && Input.GetButton("Fire2")) {
+			TurnOn ();
+		}
 	}
 
 	// On the mouse up event, the state changes to off if it was on before clicked, and
