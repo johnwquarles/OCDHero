@@ -33,28 +33,34 @@ public class LightSwitch : MonoBehaviour {
 
 	// Declares the State as state.
 	private State state;
+	private SceneStateScript scene; 
 
 	// Initializes the lightswitch so that the script knows the lights are on to
 	// start with.
 	void Start () {
 		state = LightSwitch.State.on;
+
 	}
 
 	void Update () {
 		if (state == LightSwitch.State.on && Input.GetButton("Fire1")) {
 			TurnOff ();
+
 		} else if (state == LightSwitch.State.off && Input.GetButton("Fire2")) {
 			TurnOn ();
+			SceneStateScript.flicksDone += 1;
+
 		}
 	}
 
 	// On the mouse up event, the state changes to off if it was on before clicked, and
 	// the state changes to on if it was off before clicked.
 	public void OnMouseUp() {
-		if (state == LightSwitch.State.on)
-						TurnOff ();
-				else
-						TurnOn ();
+		if (state == LightSwitch.State.on) {
+			TurnOff ();
+		} else {
+			TurnOn ();
+		}
 	}
 
 	// Turn on subprocedure: plays the TurnOn Animation, sets the state to on, and enables
