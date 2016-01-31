@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SceneStateScript : MonoBehaviour {
 	public static int flicksToDo;
@@ -9,12 +10,13 @@ public class SceneStateScript : MonoBehaviour {
 	public static int maxTimer;
 
 	// Use this for initialization
-	void Start () {
-//		currentLevel = GameState.state.levelCount % 4;
+	void Awake () {
+		currentLevel = GameState.state.levelCount % 4;
 		flicksToDo = Random.Range (7 + (currentLevel * 2), 12 + (currentLevel * 2));
-		flicksToDo = 5;
+//		flicksToDo = 5;
 		flicksDone = 0;
 		maxTimer = 300;
+		timer = 0;
 	}
 		
 	void OnGUI () {
@@ -27,9 +29,9 @@ public class SceneStateScript : MonoBehaviour {
 	void Update () {
 		timer++;
 		if ((timer > maxTimer && flicksDone < flicksToDo) || flicksDone > flicksToDo) {
-			Debug.Log("fail");
-		} else if (flicksDone == flicksToDo) {
-			Debug.Log("pass");
+			SceneManager.LoadScene (2, LoadSceneMode.Single);
+		} else if (timer > maxTimer && flicksDone == flicksToDo) {
+			SceneManager.LoadScene (1, LoadSceneMode.Single);
 		}
 	}
 }
