@@ -4,12 +4,24 @@ using UnityEngine.SceneManagement;
 
 public class Loader : MonoBehaviour {
 	private int nextSceneIndex;
+	private int lastLevelIndex;
+	private int levelsInGameCount;
 
 	void Start () {
 		GameState.state.levelCount++;
-		// Random.Range is inclusive on min, exclusive on max FOR INTEGERS. Both inclusive on float.
-		// first two scenes are title screen & loader; choose from scenes available other than these.
-		nextSceneIndex = Random.Range (3, SceneManager.sceneCountInBuildSettings);
+		lastLevelIndex = GameState.state.lastLevelIndex;
+		levelsInGameCount = SceneManager.sceneCountInBuildSettings;
+
+		nextSceneIndex = randomLevel();
+		while (nextSceneIndex == lastLevelIndex) {
+			nextSceneIndex = randomLevel ();
+		}
+
+		GameState.state.lastLevelIndex = nextSceneIndex;
 		SceneManager.LoadScene (nextSceneIndex, LoadSceneMode.Single);
+	}
+
+	int randomLevel () {
+		return Random.Range (3, levelsInGameCount);
 	}
 }

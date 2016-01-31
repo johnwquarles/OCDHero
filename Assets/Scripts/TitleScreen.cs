@@ -20,7 +20,7 @@ public class TitleScreen : MonoBehaviour {
 		} 
 		randomNum = Random.Range (0, 180);
 		if (randomNum > 176) {
-			Instantiate(explosion, new Vector3 (898 + Random.Range(-5, 5), 150+ Random.Range(-30, 30), -31), Quaternion.identity);
+			Instantiate(explosion, new Vector3 (898 + Random.Range(-5, 5), 150+ Random.Range(-10, 10), -31), Quaternion.identity);
 			sound.pitch = Random.Range (0.7f, 1.6f);
 			sound.Play();
 		}
