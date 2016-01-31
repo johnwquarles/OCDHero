@@ -13,7 +13,7 @@ public class Governor : MonoBehaviour {
 	void Update () {
 		if (clock_updater_a.hours == clock_updater_b.hours && clock_updater_b.minutes == clock_updater_a.minutes && clock_updater_b.seconds == clock_updater_a.seconds && clock_updater_a.ampm == clock_updater_b.ampm) {
 			SceneManager.LoadScene (1, LoadSceneMode.Single);		
-		} else if (clock_updater_b.minutes == 0 && clock_updater_b.seconds == 2) {
+		} else if (clock_updater_b.minutes == 0 && clock_updater_b.seconds == 1) {
 			SceneManager.LoadScene (2, LoadSceneMode.Single);
 		}
 	}

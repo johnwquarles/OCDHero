@@ -13,7 +13,12 @@ public class clock_updater_b : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		update_count = 0;
-		seconds = 40;
+		int difficulty = ((GameState.state.levelCount) / 4);
+		int time_window = 20 - 2 * difficulty;
+		if (time_window < 10) {
+			time_window = 10;
+		}
+		seconds = 60 - time_window;
 		minutes = 59;
 		hours = 11;
 		ampm = "AM";
