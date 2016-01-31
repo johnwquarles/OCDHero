@@ -20,12 +20,12 @@ public class Hands : MonoBehaviour {
 	void Update () {
 		// Reference to old position
 		Vector3 position = transform.position;
-		if (Input.GetKey (KeyCode.A)) {
+		if (Input.GetButton("Fire1")) {
 			float newX = position.x - 0.05f;
 			transform.position = new Vector3(newX, position.y, position.z);
 		}
 
-		if (Input.GetKey (KeyCode.D)) {
+		if (Input.GetButton("Fire2")) {
 			float newX = position.x + 0.05f;
 			transform.position = new Vector3(newX, position.y, position.z);	
 		}
