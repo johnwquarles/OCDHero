@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Hands : MonoBehaviour {
 	private float randomNum = 0;
 	private float MIN_VALUE = -0.035f;
 	private float MAX_VALUE = 0.035f;
-	public int dirtMeter = 5;
+	public float dirtTimer = 5.0f;
 	public float timeRemaining = 12;
+	public Text timerText;
+	public Text dirtText;
 
 	void Start () {}
 	
@@ -33,8 +36,16 @@ public class Hands : MonoBehaviour {
 		randomizeMovement(randomNum);
 
 		timeRemaining -= Time.deltaTime;
-		Debug.Log(timeRemaining);
 
+		if (dirtTimer <= 0 && timeRemaining > 0) {
+			Debug.Log ("win");
+		} else if (dirtTimer > 0 && timeRemaining <= 0) {
+			Debug.Log ("lose");
+		}
+
+		// Update text
+		timerText.text = "Time Remaining: " + Mathf.Round(timeRemaining).ToString();
+		dirtText.text = "Dirt Meter: " + Mathf.Round (dirtTimer).ToString ();
 	}
 
 	void randomizeMovement(float randomNum) {
@@ -45,6 +56,6 @@ public class Hands : MonoBehaviour {
 	}
 
 	void OnCollisionStay (Collision other) {
-		
+		dirtTimer -= Time.deltaTime;
 	}
 }
