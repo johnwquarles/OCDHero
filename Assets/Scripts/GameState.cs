@@ -7,7 +7,11 @@ public class GameState : MonoBehaviour {
 	public int levelCount;
 
 	void Awake () {
-		DontDestroyOnLoad (gameObject);
-		state = this;
+		if (state == null) {
+			DontDestroyOnLoad (gameObject);
+			state = this;
+		} else if (state != this) {
+			Destroy (gameObject);
+		}
 	}
 }

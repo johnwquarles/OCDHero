@@ -13,7 +13,6 @@ public class Loader : MonoBehaviour {
 		// Random.Range is inclusive on min, exclusive on max FOR INTEGERS. Both inclusive on float.
 		// first two scenes are title screen & loader; choose from scenes available other than these.
 		nextSceneIndex = Random.Range (2, scenes.Length);
-		Debug.Log ("nextSceneIndex = " + nextSceneIndex);
 		SceneManager.LoadScene (nextSceneIndex, LoadSceneMode.Single);
 	}
 }
