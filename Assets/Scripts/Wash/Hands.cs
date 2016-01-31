@@ -2,9 +2,12 @@
 using System.Collections;
 
 public class Hands : MonoBehaviour {
-	float randomNum = 0;
-	const float MIN_VALUE = -0.035f;
-	const float MAX_VALUE = 0.035f;
+	private float randomNum = 0;
+	private float MIN_VALUE = -0.035f;
+	private float MAX_VALUE = 0.035f;
+	public int dirtMeter = 5;
+	public float timeRemaining = 12;
+
 	void Start () {}
 	
 	// Update is called once per frame
@@ -21,11 +24,17 @@ public class Hands : MonoBehaviour {
 			transform.position = new Vector3(newX, position.y, position.z);	
 		}
 
+
+		// Randomize Movement
 		if (Time.frameCount % 24 == 0) {
 			randomNum = Random.Range(MIN_VALUE, MAX_VALUE);
 		} 
 		
 		randomizeMovement(randomNum);
+
+		timeRemaining -= Time.deltaTime;
+		Debug.Log(timeRemaining);
+
 	}
 
 	void randomizeMovement(float randomNum) {
@@ -33,5 +42,9 @@ public class Hands : MonoBehaviour {
 		float newPosition = position.x + randomNum;
 
 		transform.position = new Vector3(newPosition, position.y, position.z);
+	}
+
+	void OnCollisionStay (Collision other) {
+		
 	}
 }
