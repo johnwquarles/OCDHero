@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 using System.Collections;
 
 public class Hands : MonoBehaviour {
@@ -7,11 +8,13 @@ public class Hands : MonoBehaviour {
 	private float MIN_VALUE = -0.035f;
 	private float MAX_VALUE = 0.035f;
 	public float dirtTimer = 5.0f;
-	public float timeRemaining = 12;
+	public float timeRemaining;
 	public Text timerText;
 	public Text dirtText;
 
-	void Start () {}
+	void Start () {
+		timeRemaining = 12 - (float)(GameState.state.levelCount / 8);
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -38,9 +41,9 @@ public class Hands : MonoBehaviour {
 		timeRemaining -= Time.deltaTime;
 
 		if (dirtTimer <= 0 && timeRemaining > 0) {
-			Debug.Log ("win");
+			SceneManager.LoadScene (1, LoadSceneMode.Single); 
 		} else if (dirtTimer > 0 && timeRemaining <= 0) {
-			Debug.Log ("lose");
+			SceneManager.LoadScene (2, LoadSceneMode.Single); 
 		}
 
 		// Update text
