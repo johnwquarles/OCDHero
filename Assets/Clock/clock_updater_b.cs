@@ -3,15 +3,20 @@ using System.Collections;
 
 public class clock_updater_b : MonoBehaviour {
 	int update_count = 0;
-	public static int seconds = 40;
-	public static int minutes = 59;
-	public static int hours = 11;
-	public static string ampm = "AM";
+	public static int seconds;
+	public static int minutes;
+	public static int hours;
+	public static string ampm;
 
 	int previous_seconds = -1;
 
 	// Use this for initialization
 	void Start () {
+		update_count = 0;
+		seconds = 40;
+		minutes = 59;
+		hours = 11;
+		ampm = "AM";
 		RenderClock ();
 	}
 

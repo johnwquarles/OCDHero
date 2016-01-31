@@ -33,5 +33,4 @@ public class Sleeve : MonoBehaviour {
 		Destroy (this.gameObject);
 		script.explosionSound ();
 	}
-		
 }
