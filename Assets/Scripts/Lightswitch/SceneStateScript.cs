@@ -14,8 +14,9 @@ public class SceneStateScript : MonoBehaviour {
 	}
 		
 	void OnGUI () {
-		GUI.Label (new Rect (100, 100, 100, 20), "Done: " + flicksDone.ToString());
-		GUI.Label (new Rect (100, 120, 100, 20), "To Do: " + flicksToDo.ToString());
+		GUI.skin.label.fontSize = 22;
+		GUI.Label (new Rect (100, 100, 100, 100), "Done: " + flicksDone.ToString());
+		GUI.Label (new Rect (100, 200, 100, 100), "To Do: " + flicksToDo.ToString());
 	}
 	
 	// Update is called once per frame
