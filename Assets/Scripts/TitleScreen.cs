@@ -13,11 +13,10 @@ public class TitleScreen : MonoBehaviour {
 		sound = GetComponent<AudioSource> ();
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if (Input.GetButton ("Fire1")) {
 			SceneManager.LoadScene (1);
-		} 
+		}
 		randomNum = Random.Range (0, 180);
 		if (randomNum > 176) {
 			Instantiate(explosion, new Vector3 (898 + Random.Range(-5, 5), 150+ Random.Range(-10, 10), -31), Quaternion.identity);
