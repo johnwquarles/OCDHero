@@ -7,12 +7,11 @@ public class TitleScreen : MonoBehaviour {
 	private AudioSource sound;
 	private int randomNum;
 
-	// Use this for initialization
 	void Start () {
 		GameState.state.levelCount = 0;
 		sound = GetComponent<AudioSource> ();
 	}
-	
+
 	void Update () {
 		if (Input.GetButton ("Fire1")) {
 			SceneManager.LoadScene (1);
